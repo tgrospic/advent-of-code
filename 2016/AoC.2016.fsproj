@@ -62,8 +62,11 @@
   <ItemGroup>
     <Compile Include="Library.fs" />
     <Compile Include="Day01.fs" />
+    <Compile Include="Day15.fs" />
+    <Compile Include="Day18.fs" />
     <Compile Include="Tests.fs" />
     <Compile Include="Program.fs" />
+    <None Include="Play.fsx" />
     <None Include="paket.references" />
     <Content Include="App.config" />
   </ItemGroup>
