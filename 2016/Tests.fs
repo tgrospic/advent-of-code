@@ -1,6 +1,7 @@
 module AdventOfCode.Tests
 
 open Fuchu
+open Library
 
 module Day01 =
   open AoC.Day01
@@ -8,6 +9,15 @@ module Day01 =
   let results = [
     testCase "Part 1" <| fun _ -> Assert.Equal("Distance", 181, distance puzzleInput)
     testCase "Part 2" <| fun _ -> Assert.Equal("First intersection distance", 140, firstIntersectionDistance puzzleInput)
+  ]
+
+module Day06 =
+  open AoC.Day06
+  let inputPath = __SOURCE_DIRECTORY__ + @"/puzzles/input-2016-day06.txt"
+  let puzzleInput = readFile inputPath
+  let results = [
+    testCase "Part 1" <| fun _ -> Assert.Equal("Message 1", "kjxfwkdh", findMessageWithMostCommonLetter puzzleInput)
+    testCase "Part 2" <| fun _ -> Assert.Equal("Message 2", "xrwcsnps", findMessageWithLeastCommonLetter puzzleInput)
   ]
 
 module Day15 =
@@ -32,6 +42,7 @@ module Day18 =
 let ``Advent of Code`` () =
   testList "2016" [
     testList "Day 01" Day01.results
+    testList "Day 06" Day06.results
     testList "Day 15" Day15.results
     testList "Day 18" Day18.results
   ]

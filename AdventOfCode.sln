@@ -10,6 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".paket", ".paket", "{63297B
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0E82FB88-E8A6-46F0-96EF-64029C81F82D}"
 	ProjectSection(SolutionItems) = preProject
+		2016\puzzles\input-2016-day06.txt = 2016\puzzles\input-2016-day06.txt
 		README.md = README.md
 	EndProjectSection
 EndProject

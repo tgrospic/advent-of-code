@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="Library.fs" />
     <Compile Include="Day01.fs" />
+    <Compile Include="Day06.fs" />
     <Compile Include="Day15.fs" />
     <Compile Include="Day18.fs" />
     <Compile Include="Tests.fs" />
