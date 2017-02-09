@@ -9,3 +9,12 @@ let (|Regex|_|) pattern input =
   else None
 
 let readFile p = File.ReadAllText(p)
+
+module FParsecOp =
+  open FParsec
+
+  let (<*>) f x = f >>= fun f' -> x >>= fun x' -> preturn (f' x')
+  let (<!>) f x = preturn f <*> x
+  let (<**>) = (.>>.)
+  let ( *>) = (>>.)
+  let (<* ) = (.>>)
