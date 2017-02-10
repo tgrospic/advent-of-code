@@ -20,6 +20,16 @@ module Day06 =
     testCase "Part 2" <| fun _ -> Assert.Equal("Message 2", "xrwcsnps", findMessageWithLeastCommonLetter puzzleInput)
   ]
 
+module Day09 =
+  open AoC.Day09
+  open FParsec.CharParsers
+  let inputPath = __SOURCE_DIRECTORY__ + @"/puzzles/input-2016-day09.txt"
+  let puzzleInput = readFile inputPath
+  let results = [
+    testCase "Part 1" <| fun _ -> Assert.Equal("Length 1", 97714L, run grammar puzzleInput |> result)
+    testCase "Part 2" <| fun _ -> Assert.Equal("Length 2", 10762972461L, run grammarLen >> result <| puzzleInput)
+  ]
+
 module Day15 =
   open AoC.Day15
   let puzzleInput  = [(17, 5);(19, 8);( 7, 1);(13, 7);( 5, 1);( 3, 0)]
@@ -43,6 +53,7 @@ let ``Advent of Code`` () =
   testList "2016" [
     testList "Day 01" Day01.results
     testList "Day 06" Day06.results
+    testList "Day 09" Day09.results
     testList "Day 15" Day15.results
     testList "Day 18" Day18.results
   ]
