@@ -9,8 +9,6 @@ open Library
 open FParsec
 open FParsecOp
 
-let charsToString (chs : char list) =
-  chs |> List.fold (fun a x -> a + (x.ToString())) ""
 let strJoin (xs : string list) =
   xs |> List.fold (+) ""
 let strLen64 = String.length >> int64
@@ -21,8 +19,8 @@ let result = function
 
 // PART 1
 
-let pTxt  = charsToString <!> many letter
-let pTxt1 = charsToString <!> many1 letter
+let pword  = manySatisfy System.Char.IsLetter
+let pword1 = many1Satisfy System.Char.IsLetter
 
 let pIntPair = pint32 <* pchar 'x' <**> pint32
 
@@ -32,14 +30,14 @@ let mkSubP (x, y) = List.replicate y >> strJoin <!> anyString x
 
 let pCodeExpr = pCode >>= mkSubP
 
-let expr = pTxt1 <|> ((+) <!> pCodeExpr <*> pTxt)
+let expr = pword1 <|> ((+) <!> pCodeExpr <*> pword)
 
 let grammar = strJoin >> strLen64 <!> many expr
 
 // PART 2
 
-let pStrLen  = strLen64 <!> pTxt
-let pStr1Len = strLen64 <!> pTxt1
+let pStrLen  = strLen64 <!> pword
+let pStr1Len = strLen64 <!> pword1
 
 let rec mkSubPLen (x, y) =
   (fun str ->
