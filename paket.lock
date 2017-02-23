@@ -2,6 +2,8 @@ NUGET
   remote: https://www.nuget.org/api/v2
     FParsec (1.0.2)
     FSharp.Core (4.0.0.1) - redirects: force
+    FSharpx.Collections (1.15.2)
+      FSharp.Core
     Fuchu (1.0.3)
       FSharp.Core (>= 3.1.2.1)
 
