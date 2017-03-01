@@ -2,7 +2,7 @@ source https://nuget.org/api/v2
 
 nuget FParsec
 nuget FSharp.Core redirects: force
-nuget FSharpx.Collections
+nuget FSharpx.Extras
 nuget Fuchu
 
 group Build

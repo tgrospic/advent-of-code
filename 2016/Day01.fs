@@ -6,6 +6,8 @@
 module AoC.Day01
 
 open Library
+open FSharpx.Text.Regex
+open System.Text.RegularExpressions
 
 // PART 1
 
@@ -26,8 +28,8 @@ let walker (x, y, face) lr =
 let patternLR = @"([LR])([\d]+)"
 
 let parseLR = function
-  | Regex patternLR [ dir; num ] when dir = "L" -> L <| int num
-  | Regex patternLR [ dir; num ] when dir = "R" -> R <| int num
+  | Match RegexOptions.None patternLR { GroupValues = [dir; num] } when dir = "L" -> L <| int num
+  | Match RegexOptions.None patternLR { GroupValues = [dir; num] } when dir = "R" -> R <| int num
   | _ -> failwith "Hey! This is not fair!"
 
 let parser (str : string) =

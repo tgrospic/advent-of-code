@@ -12,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		2016\puzzles\input-2016-day06.txt = 2016\puzzles\input-2016-day06.txt
 		2016\puzzles\input-2016-day09.txt = 2016\puzzles\input-2016-day09.txt
+		2016\puzzles\input-2016-day11-1.txt = 2016\puzzles\input-2016-day11-1.txt
+		2016\puzzles\input-2016-day11-2.txt = 2016\puzzles\input-2016-day11-2.txt
 		README.md = README.md
 	EndProjectSection
 EndProject
