@@ -44,7 +44,7 @@ let rec mkSubPLen (x, y) =
     // Parse subexpression
     let len =
       match run grammarLen str with
-      | Success (x, _, _) -> x
+      | Success (n, _, _) when n > 0L -> n
       | _ -> strLen64 str
     int64 y * len
   ) <!> anyString x
