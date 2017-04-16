@@ -1,0 +1,25 @@
+{
+  "name": "new-earth",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "output"
+  ],
+  "dependencies": {
+    "purescript-prelude": "^3.0.0",
+    "purescript-console": "^3.0.0",
+    "purescript-tuples": "^4.0.0",
+    "purescript-eff": "^3.0.0",
+    "purescript-parsing": "^4.0.0",
+    "purescript-debug": "^3.0.0",
+    "purescript-profunctor": "^3.0.0",
+    "purescript-sequences": "https://github.com/tgrospic/purescript-sequences.git#^1.0.3",
+    "purescript-exceptions": "^3.0.0",
+    "purescript-node-fs": "^4.0.0",
+    "purescript-node-process": "^4.0.0"
+  },
+  "devDependencies": {
+    "purescript-psci-support": "^3.0.0"
+  }
+}

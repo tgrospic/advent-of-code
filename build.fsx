@@ -16,11 +16,19 @@ Target "Build" (fun _ ->
   |> Log "AppBuild-Output: "
 )
 
+Target "Test" (fun _ ->
+  if Shell.Exec "./build/AoC.2016.exe" <> 0
+  then failwith "Test failed!"
+)
+
 Target "Default" (fun _ ->
   Run "Build"
 )
 
 // Dependencies
+"Build"
+  ==> "Test"
+
 "Clean"
   ==> "Build"
   ==> "Default"
