@@ -3,6 +3,7 @@ language: csharp
 mono:
   - latest
 script:
+  - ./build.sh test
   - pulp test
 before_install:
   - nvm install $NODE_VERSION
