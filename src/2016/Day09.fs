@@ -40,14 +40,12 @@ let pStrLen  = strLen64 <!> pword
 let pStr1Len = strLen64 <!> pword1
 
 let rec mkSubPLen (x, y) =
-  (fun str ->
-    // Parse subexpression
-    let len =
-      match run grammarLen str with
-      | Success (n, _, _) when n > 0L -> n
-      | _ -> strLen64 str
-    int64 y * len
-  ) <!> anyString x
+  let subLength str =
+    match run grammarLen str with
+    | Success (n, _, _) when n > 0L -> int64 y * n
+    | _ -> int64 y * strLen64 str
+  // Parse subexpression
+  subLength <!> anyString x
 
 and pCodeLen = pCode >>= mkSubPLen
 
