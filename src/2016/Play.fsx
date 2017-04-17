@@ -1,7 +1,7 @@
-#r "../packages/FParsec/lib/net40-client/FParsecCS.dll"
-#r "../packages/FParsec/lib/net40-client/FParsec.dll"
-#r "../packages/FSharpx.Collections/lib/net40/FSharpx.Collections.dll"
-#r "../packages/FSharpx.Extras/lib/net45/FSharpx.Extras.dll"
+#r "../../packages/FParsec/lib/net40-client/FParsecCS.dll"
+#r "../../packages/FParsec/lib/net40-client/FParsec.dll"
+#r "../../packages/FSharpx.Collections/lib/net40/FSharpx.Collections.dll"
+#r "../../packages/FSharpx.Extras/lib/net45/FSharpx.Extras.dll"
 #load "Library.fs"
 
 open FParsec
