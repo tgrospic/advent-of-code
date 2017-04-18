@@ -58,27 +58,6 @@
   </Target>
   -->
   <Import Project="..\..\.paket\paket.targets" />
-  <ItemGroup>
-    <Compile Include="Library.fs" />
-    <Compile Include="Day01.fs" />
-    <Compile Include="Day06.fs" />
-    <Compile Include="Day09.fs" />
-    <Compile Include="Day11.fs" />
-    <Compile Include="Day15.fs" />
-    <Compile Include="Day18.fs" />
-    <Compile Include="Tests.fs" />
-    <Compile Include="Program.fs" />
-    <None Include="paket.references" />
-    <Content Include="App.config" />
-    <None Include="Play.fsx" />
-    <None Include="Day11.fsx" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="mscorlib" />
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Numerics" />
-  </ItemGroup>
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.0' Or $(TargetFrameworkVersion) == 'v4.5' Or $(TargetFrameworkVersion) == 'v4.5.1' Or $(TargetFrameworkVersion) == 'v4.5.2' Or $(TargetFrameworkVersion) == 'v4.5.3' Or $(TargetFrameworkVersion) == 'v4.6' Or $(TargetFrameworkVersion) == 'v4.6.1' Or $(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3')">
       <ItemGroup>
@@ -245,13 +224,6 @@
       </ItemGroup>
     </When>
   </Choose>
-  <ItemGroup>
-    <Reference Include="Fuchu">
-      <HintPath>..\..\packages\Fuchu\lib\Fuchu.dll</HintPath>
-      <Private>True</Private>
-      <Paket>True</Paket>
-    </Reference>
-  </ItemGroup>
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v1.0' Or $(TargetFrameworkVersion) == 'v1.1' Or $(TargetFrameworkVersion) == 'v1.2')">
       <ItemGroup>
@@ -826,4 +798,50 @@
       </ItemGroup>
     </When>
   </Choose>
+  <ItemGroup>
+    <None Include="paket.references" />
+    <Content Include="App.config" />
+    <Compile Include="..\AoC2016\Library.fs">
+      <Link>Library.fs</Link>
+    </Compile>
+    <Compile Include="..\AoC2016\Day01.fs">
+      <Link>Day01.fs</Link>
+    </Compile>
+    <Compile Include="..\AoC2016\Day06.fs">
+      <Link>Day06.fs</Link>
+    </Compile>
+    <Compile Include="..\AoC2016\Day09.fs">
+      <Link>Day09.fs</Link>
+    </Compile>
+    <Compile Include="..\AoC2016\Day11.fs">
+      <Link>Day11.fs</Link>
+    </Compile>
+    <None Include="..\AoC2016\Day11.fsx">
+      <Link>Day11.fsx</Link>
+    </None>
+    <Compile Include="..\AoC2016\Day15.fs">
+      <Link>Day15.fs</Link>
+    </Compile>
+    <Compile Include="..\AoC2016\Day18.fs">
+      <Link>Day18.fs</Link>
+    </Compile>
+    <Compile Include="..\..\test\Main.fs">
+      <Link>Main.fs</Link>
+    </Compile>
+    <Compile Include="Program.fs" />
+    <None Include="..\AoC2016\Play.fsx">
+      <Link>Play.fsx</Link>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="Fuchu">
+      <HintPath>..\..\packages\Fuchu\lib\Fuchu.dll</HintPath>
+      <Private>True</Private>
+      <Paket>True</Paket>
+    </Reference>
+  </ItemGroup>
 </Project>

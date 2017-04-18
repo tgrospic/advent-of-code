@@ -76,7 +76,7 @@ grammarLen = foldl (+) 0 <$> many exprLen
 -- parse grammarLen "" "X(8x2)(3x3)ABCY"
 
 puzzleInput :: IO String -- Eff ( EXCEPTION )
-puzzleInput = readFile "./src/2016/puzzles/input-2016-day09.txt"
+puzzleInput = readFile "./src/AoC2016/puzzles/input-2016-day09.txt"
 
 run :: Parsec String () a -> IO (Either ParseError a)
 run p = puzzleInput >>= pure <$> parse p ""

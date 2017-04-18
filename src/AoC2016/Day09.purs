@@ -95,7 +95,7 @@ grammarLen = foldl (+) 0.0 <$> many exprLen
 puzzleInput :: ∀ eff. Eff ( process :: PROCESS, fs :: FS | eff ) String
 puzzleInput = read =<< filePath
   where
-  filePath = flip resolve "./src/2016/puzzles/input-2016-day09.txt" <$> singleton <$> cwd
+  filePath = flip resolve "./src/AoC2016/puzzles/input-2016-day09.txt" <$> singleton <$> cwd
   read = readTextFile UTF8 >>> try >=> pure <$> either (const mempty) id
 
 run :: ∀ eff a. ParserS a → Eff ( process :: PROCESS, fs :: FS | eff ) (Either ParseError a)
