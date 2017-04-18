@@ -18,3 +18,7 @@ pulp test
 
 [travis-image]: https://travis-ci.org/tgrospic/advent-of-code.svg
 [travis-url]: https://travis-ci.org/tgrospic/advent-of-code
+
+## Haskell
+
+`stack test`

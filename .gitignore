@@ -198,3 +198,5 @@ docs/tools/FSharp.Formatting.svclog
 /generated-docs/
 /.psc*
 /.psa*
+
+/.stack*
