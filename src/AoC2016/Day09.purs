@@ -4,9 +4,9 @@ import Data.String as S
 import Control.Alternative ((<|>))
 import Control.Lazy (class Lazy)
 import Control.Monad.Eff (Eff)
-import Control.Monad.Eff.Exception (try)
+import Control.Monad.Eff.Exception (EXCEPTION)
 import Data.Array (many, replicate, singleton, (:))
-import Data.Either (Either(..), either)
+import Data.Either (Either(Right))
 import Data.Int (toNumber)
 import Data.Monoid (mempty)
 import Data.Sequence (Seq)
@@ -18,7 +18,7 @@ import Node.FS (FS)
 import Node.FS.Sync (readTextFile)
 import Node.Path (resolve)
 import Node.Process (PROCESS, cwd)
-import Prelude (const, flip, id, pure, ($), (*), (*>), (+), (<$>), (<*), (<*>), (<>), (=<<), (>), (>=>), (>>=), (>>>))
+import Prelude (flip, pure, ($), (*), (*>), (+), (<$>), (<*), (<*>), (<>), (=<<), (>), (>>=))
 import Text.Parsing.Parser (ParseError, Parser, runParser)
 import Text.Parsing.Parser.Language (haskellDef)
 import Text.Parsing.Parser.String (anyChar, char)
@@ -92,17 +92,18 @@ grammarLen = foldl (+) 0.0 <$> many exprLen
 -- runParser "A(6x2)a(2x5)cdefg" grammarLen
 -- runParser "X(8x2)(3x3)ABCY" grammarLen
 
-puzzleInput :: ∀ eff. Eff ( process :: PROCESS, fs :: FS | eff ) String
-puzzleInput = read =<< filePath
+type IOProcFsEx a = ∀ eff. Eff ( process :: PROCESS, fs :: FS, exception :: EXCEPTION | eff ) a
+
+puzzleInput :: IOProcFsEx String
+puzzleInput = readTextFile UTF8 =<< filePath
   where
   filePath = flip resolve "./src/AoC2016/puzzles/input-2016-day09.txt" <$> singleton <$> cwd
-  read = readTextFile UTF8 >>> try >=> pure <$> either (const mempty) id
 
-run :: ∀ eff a. ParserS a → Eff ( process :: PROCESS, fs :: FS | eff ) (Either ParseError a)
+run :: ∀ a. ParserS a → IOProcFsEx (Either ParseError a)
 run p = flip runParser p <$> puzzleInput
 
-part1 :: ∀ eff. Eff ( process :: PROCESS, fs :: FS | eff ) (Either ParseError Int)
+part1 :: IOProcFsEx (Either ParseError Int)
 part1 = run (S.length <$> grammar)
 
-part2 :: ∀ eff. Eff ( process :: PROCESS , fs :: FS | eff ) (Either ParseError Number)
+part2 :: IOProcFsEx (Either ParseError Number)
 part2 = run grammarLen
