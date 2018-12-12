@@ -21,4 +21,6 @@ pulp test
 
 ## Haskell
 
+`cabal new-test`
+
 `stack test`

@@ -200,3 +200,6 @@ docs/tools/FSharp.Formatting.svclog
 /.psa*
 
 /.stack*
+/dist
+/dist-newstyle
+/.ghc.environment.*
