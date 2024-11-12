@@ -4,6 +4,12 @@
 
 [Advent of Code](http://adventofcode.com/)
 
+## Rust
+
+```sh
+cargo test
+```
+
 ## F#
 
 ```sh

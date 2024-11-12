@@ -190,3 +190,6 @@ TestResults.xml
 /dist-newstyle
 /.ghc.environment.*
 /.spec-results
+
+# Rust
+/target
