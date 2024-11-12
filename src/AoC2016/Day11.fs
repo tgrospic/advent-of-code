@@ -8,6 +8,7 @@ module AoC.Day11
 open Library
 open FSharpx.Collections
 open FSharpx.Functional
+open FSharpx.Prelude
 
 type Thing = RTG of string | MEM of string
 
@@ -18,7 +19,7 @@ module Parser =
   open FParsec
   open FParsecOp
   open FSharpx.Text
-  
+
   let __ = spaces
   let pword1 = many1Satisfy System.Char.IsLetter
   let aan = pchar 'a' <* opt ^ pchar 'n'
@@ -36,7 +37,7 @@ module Parser =
   | Success (x, _, _) -> x
   | Failure (s, _, _) -> failwith s
 
-  let parser = 
+  let parser =
     Strings.toLines
     >> Seq.map ^ run pLine
     >> Seq.rev
@@ -59,7 +60,7 @@ let pathCost (Floor (_, downs, c, ups)) =
   |> List.sum
 
 let rec combinations input = seq {
-  match input with 
+  match input with
   | x::xs ->
     yield! combinations xs
     yield! Seq.map (fun x' -> [x; x']) xs

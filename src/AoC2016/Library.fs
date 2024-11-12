@@ -13,7 +13,7 @@ module FParsecOp =
   let ( *>) = (>>.)
   let (<* ) = (.>>)
 
-module Arrow =     
+module Arrow =
   let inline split x = (x, x)
   let inline combine f (x, y) = f x y
   let inline first f (a, b) = (f a, b)

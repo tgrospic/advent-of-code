@@ -178,28 +178,15 @@ temp/
 # Test results produced by build
 TestResults.xml
 
-# Nuget outputs
-nuget/*.nupkg
-release.cmd
-release.sh
-localpackages/
-paket-files
-*.orig
-.paket/paket.exe
-docs/content/license.md
-docs/content/release-notes.md
 .fake
-docs/tools/FSharp.Formatting.svclog
-
-/bower_components/
-/node_modules/
-/.pulp-cache/
+/node_modules
 /output/
-/generated-docs/
+/generated-docs
 /.psc*
 /.psa*
-
+/.spago
 /.stack*
 /dist
 /dist-newstyle
 /.ghc.environment.*
+/.spec-results

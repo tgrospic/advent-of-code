@@ -1,7 +1,7 @@
-#r "../../packages/FParsec/lib/net40-client/FParsecCS.dll"
-#r "../../packages/FParsec/lib/net40-client/FParsec.dll"
-#r "../../packages/FSharpx.Collections/lib/net40/FSharpx.Collections.dll"
-#r "../../packages/FSharpx.Extras/lib/net45/FSharpx.Extras.dll"
+#r "../../bin/Debug/net8.0/FParsecCS.dll"
+#r "../../bin/Debug/net8.0/FParsec.dll"
+#r "../../bin/Debug/net8.0/FSharpx.Collections.dll"
+#r "../../bin/Debug/net8.0/FSharpx.Extras.dll"
 #load "Library.fs"
 
 open FParsec
@@ -9,5 +9,5 @@ open FParsec.Primitives
 open Library
 open FParsecOp
 open FSharpx.Collections
-open FSharpx.Collections.TimeMeasurement
+open FSharpx.TimeMeasurement
 open FSharpx.Functional

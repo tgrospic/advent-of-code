@@ -1,26 +1,26 @@
 # Programming puzzles
 
-[![build status][travis-image]][travis-url]
+[![Build and Test][ga-badge]][ga-url]
 
 [Advent of Code](http://adventofcode.com/)
 
 ## F#
 
-`./build.sh test`
+```sh
+dotnet test
+```
 
 ## PureScript
 
+```sh
+spago test
 ```
-bower i
-
-pulp test
-```
-
-[travis-image]: https://travis-ci.org/tgrospic/advent-of-code.svg
-[travis-url]: https://travis-ci.org/tgrospic/advent-of-code
 
 ## Haskell
 
-`cabal new-test`
+```sh
+cabal test
+```
 
-`stack test`
+[ga-badge]: https://github.com/tgrospic/advent-of-code/actions/workflows/test.yml/badge.svg?branch=master
+[ga-url]: https://github.com/tgrospic/advent-of-code/actions?query=branch:master
