@@ -1,8 +1,9 @@
 module AoC2016.Day09 where
 
+import AoC.Util (ParserS, parseEff, pint, readFile)
 import Control.Alt ((<|>))
 import Control.Lazy (class Lazy)
-import Data.Array (many, replicate, singleton, (:))
+import Data.Array (many, replicate, (:))
 import Data.Either (Either(Right))
 import Data.Int (toNumber)
 import Data.Monoid (mempty)
@@ -12,23 +13,14 @@ import Data.Traversable (foldl)
 import Data.Tuple (Tuple(..))
 import Data.Unfoldable (replicateA)
 import Effect (Effect)
-import Node.Encoding (Encoding(..))
-import Node.FS.Sync (readTextFile)
-import Node.Path (resolve)
-import Node.Process (cwd)
-import Parsing (ParseError, Parser, runParser)
-import Parsing.Language (haskellDef)
+import Parsing (runParser)
 import Parsing.String (anyChar, char)
-import Parsing.Token (TokenParser, letter, makeTokenParser)
-import Prelude (flip, pure, ($), (*), (*>), (+), (<$>), (<*), (<*>), (<>), (=<<), (>), (>>=))
+import Parsing.Token (letter)
+import Prelude (pure, ($), (*), (*>), (+), (<$>), (<*), (<*>), (<>), (>), (>>=))
 
-type ParserS = Parser String
-
-tokenParser :: TokenParser
-tokenParser = makeTokenParser haskellDef
-
-pnumber :: ParserS Int
-pnumber = tokenParser.integer
+-- Puzzle input
+puzzleInput :: Effect String
+puzzleInput = readFile "./src/AoC2016/puzzles/input-2016-day09.txt"
 
 anyString :: Int → ParserS String
 anyString x = fromCharArray <$> replicateA x anyChar
@@ -40,7 +32,7 @@ pword :: ParserS String
 pword = pword1 <|> pure mempty
 
 pIntPair :: ParserS (Tuple Int Int)
-pIntPair = Tuple <$> pnumber <* char 'x' <*> pnumber
+pIntPair = Tuple <$> pint <* char 'x' <*> pint
 
 pCode :: ParserS (Tuple Int Int)
 pCode = char '(' *> pIntPair <* char ')'
@@ -87,17 +79,8 @@ grammarLen = foldl (+) 0.0 <$> many exprLen
 -- runParser "A(6x2)a(2x5)cdefg" grammarLen
 -- runParser "X(8x2)(3x3)ABCY" grammarLen
 
-puzzleInput :: Effect String
-puzzleInput = readTextFile UTF8 =<< filePath
-  where
-  filePath = flip resolve "./src/AoC2016/puzzles/input-2016-day09.txt" <$> singleton =<< cwd
+part1 :: Effect Int
+part1 = parseEff (S.length <$> grammar) puzzleInput
 
--- run :: ∀ a. ParserS a → IOProcFsEx (Either ParseError a)
-run :: ∀ a. ParserS a → Effect (Either ParseError a)
-run p = flip runParser p <$> puzzleInput
-
-part1 :: Effect (Either ParseError Int)
-part1 = run (S.length <$> grammar)
-
-part2 :: Effect (Either ParseError Number)
-part2 = run grammarLen
+part2 :: Effect Number
+part2 = parseEff grammarLen puzzleInput

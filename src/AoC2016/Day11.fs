@@ -5,7 +5,7 @@
 *)
 module AoC.Day11
 
-open Library
+open Util
 open FSharpx.Collections
 open FSharpx.Functional
 open FSharpx.Prelude

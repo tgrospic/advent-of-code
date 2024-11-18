@@ -13,11 +13,14 @@ cabal-version:       >=1.10
 
 library
   hs-source-dirs:      src
-  exposed-modules:     AoC2016.Day09
+  exposed-modules:     Util
+                     , AoC2016.Day09
                      , AoC2018.Day01
                      , AoC2018.Day02
+                     , AoC2022.Day01
   build-depends:       base >= 4.7 && < 5
                      , parsec
+                     , parsec-numbers
                      , containers
                      , multiset
   default-language:    Haskell2010

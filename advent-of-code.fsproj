@@ -4,7 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="src/AoC2016/Library.fs" />
+    <Compile Include="src/Util.fs" />
     <Compile Include="src/AoC2016/Day01.fs" />
     <Compile Include="src/AoC2016/Day06.fs" />
     <Compile Include="src/AoC2016/Day09.fs" />

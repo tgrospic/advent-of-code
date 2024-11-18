@@ -2,11 +2,13 @@
 #r "../../bin/Debug/net8.0/FParsec.dll"
 #r "../../bin/Debug/net8.0/FSharpx.Collections.dll"
 #r "../../bin/Debug/net8.0/FSharpx.Extras.dll"
-#load "Library.fs"
+#load "../Lib.fs"
 
+// dotnet fsi src/AoC2016/Play.fsx
+
+open Util
 open FParsec
 open FParsec.Primitives
-open Library
 open FParsecOp
 open FSharpx.Collections
 open FSharpx.TimeMeasurement

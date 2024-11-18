@@ -5,18 +5,15 @@ module AoC2016.Day09
 
 import Control.Applicative (many, (<|>))
 import Control.Monad (replicateM)
-import Data.Functor.Identity (Identity)
 import Data.Monoid ((<>))
 import Text.Parsec (Parsec, ParseError, anyChar, letter, char, parse)
-import Text.Parsec.Language (haskellDef)
 import Text.Parsec.String (Parser)
-import Text.Parsec.Token (GenTokenParser, makeTokenParser, natural)
+import Util (parseIO)
+import Text.ParserCombinators.Parsec.Number (int)
 
-tokenParser :: GenTokenParser String u Identity
-tokenParser = makeTokenParser haskellDef
-
-pnumber :: Parser Int
-pnumber = fromInteger <$> natural tokenParser
+-- Puzzle input
+puzzleInput :: IO String
+puzzleInput = readFile "./src/AoC2016/puzzles/input-2016-day09.txt"
 
 anyString :: Int -> Parser String
 anyString x = replicateM x anyChar
@@ -28,7 +25,7 @@ pword :: Parser String
 pword = pword1 <|> pure mempty
 
 pIntPair :: Parser (Int, Int)
-pIntPair = (,) <$> pnumber <* char 'x' <*> pnumber
+pIntPair = (,) <$> int <* char 'x' <*> int
 
 pCode :: Parser (Int, Int)
 pCode = char '(' *> pIntPair <* char ')'
@@ -75,15 +72,9 @@ grammarLen = foldl (+) 0 <$> many exprLen
 -- parse grammarLen "" "A(6x2)a(2x5)cdefg"
 -- parse grammarLen "" "X(8x2)(3x3)ABCY"
 
-puzzleInput :: IO String -- Eff ( EXCEPTION )
-puzzleInput = readFile "./src/AoC2016/puzzles/input-2016-day09.txt"
+part1 :: IO Int
+part1 = parseIO (length <$> grammar) puzzleInput
 
-run :: Parsec String () a -> IO (Either ParseError a)
-run p = puzzleInput >>= pure <$> parse p ""
-
-part1 :: IO (Either ParseError Int)
-part1 = run (length <$> grammar)
-
-part2 :: IO (Either ParseError Int)
-part2 = run grammarLen
+part2 :: IO Int
+part2 = parseIO grammarLen puzzleInput
 

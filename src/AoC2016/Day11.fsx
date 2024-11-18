@@ -6,7 +6,7 @@
 
 open FParsec
 open FParsec.Primitives
-open Library
+open Util
 open FParsecOp
 open FSharpx.Collections
 open FSharpx.TimeMeasurement

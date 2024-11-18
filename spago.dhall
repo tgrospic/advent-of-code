@@ -19,6 +19,7 @@ to generate this file without the comments in this block.
   , "exceptions"
   , "foldable-traversable"
   , "integers"
+  , "lists"
   , "node-buffer"
   , "node-fs"
   , "node-path"

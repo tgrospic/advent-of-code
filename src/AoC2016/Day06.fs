@@ -5,7 +5,7 @@
 *)
 module AoC.Day06
 
-open Library
+open Util
 
 let parser (str: string) = str.Split('\n')
 

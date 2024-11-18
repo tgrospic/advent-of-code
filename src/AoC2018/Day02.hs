@@ -3,30 +3,16 @@ module AoC2018.Day02
   , part2
   ) where
 
-import Control.Applicative (many, (<|>))
-import Data.Foldable (asum)
-import Data.Functor.Identity (Identity)
-import Data.Maybe (isJust)
-import Text.Parsec (Parsec, ParseError, char, parse, letter, endOfLine)
-import Text.Parsec.Language (haskellDef)
-import Text.Parsec.String (Parser)
-import Text.Parsec.Token (GenTokenParser, makeTokenParser, natural)
+import Control.Applicative (many, (<|>), asum)
 import qualified Data.MultiSet as MS
 import qualified Data.Set as S
+import Util (parseIO, liftMaybe)
+import Text.Parsec (endOfLine, letter)
+import Text.Parsec.String (Parser)
 
 -- Puzzle input
 puzzleInput :: IO String
 puzzleInput = readFile "./src/AoC2018/puzzles/day-02.txt"
-
-run :: Parsec String () a -> IO (Either ParseError a)
-run p = puzzleInput >>= pure <$> parse p ""
-
--- Tokens
-tokenParser :: GenTokenParser String u Identity
-tokenParser = makeTokenParser haskellDef
-
-pnumber :: Parser Int
-pnumber = fromInteger <$> natural tokenParser
 
 -- Represents one line in puzzle
 pline :: Parser String
@@ -61,8 +47,8 @@ multiLineOccur = many $ occurrence charSet
 checksum :: Parser Int
 checksum = sumMult . fmap occur2and3 <$> multiLineOccur
 
-part1 :: IO (Either ParseError Int)
-part1 = run checksum
+part1 :: IO Int
+part1 = parseIO checksum puzzleInput
 
 
 -- PART 2
@@ -86,8 +72,8 @@ firstDupe xs = asum $ fst <$> scanl (foldl dupe) (Nothing, S.empty) xs
       then (Just x, s)
       else (m, S.insert x s)
 
-firstDupeParser :: Parser (Maybe String)
-firstDupeParser = fmap snd . firstDupe . fmap combinations <$> many pline
+firstDupeParser :: Parser String
+firstDupeParser = liftMaybe "not found" =<< fmap snd . firstDupe . fmap combinations <$> many pline
 
-part2 :: IO (Either ParseError (Maybe String))
-part2 = run firstDupeParser
+part2 :: IO String
+part2 = parseIO firstDupeParser puzzleInput

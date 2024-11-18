@@ -5,7 +5,7 @@
 *)
 module AoC.Day09
 
-open Library
+open Util
 open FParsec
 open FParsecOp
 

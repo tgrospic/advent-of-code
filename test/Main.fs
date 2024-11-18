@@ -1,6 +1,6 @@
 module AdventOfCode.Tests
 
-open Library
+open Util
 open System.IO
 open Xunit
 

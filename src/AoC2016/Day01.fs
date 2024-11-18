@@ -5,7 +5,7 @@
 *)
 module AoC.Day01
 
-open Library
+open Util
 open FSharpx.Text.Regex
 open System.Text.RegularExpressions
 
@@ -54,7 +54,7 @@ type Point = int * int
 type Line  = Point * Point
 
 //E = B-A = ( Bx-Ax, By-Ay )
-//F = D-C = ( Dx-Cx, Dy-Cy ) 
+//F = D-C = ( Dx-Cx, Dy-Cy )
 //P = ( -Ey, Ex )
 //h = ( (A-C) * P ) / ( F * P )
 
@@ -102,4 +102,4 @@ let firstIntersectionDistance input =
   |> snd
   |> List.head
   |> calcDistance
-  
+

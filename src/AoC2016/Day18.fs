@@ -5,7 +5,7 @@
 *)
 module AoC.Day18
 
-open Library
+open Util
 
 // PART 1
 
@@ -36,7 +36,7 @@ let rec interleave3 = function
 let genNextLine prevLine =
   // Add safe plate to each side
   interleave3 <| Safe::prevLine@[Safe]
-  |> List.map getNextPlate 
+  |> List.map getNextPlate
 
 let genNextNLines n prevLine =
   let f acc _ =
@@ -58,7 +58,7 @@ let safeCount rows input =
 // Example 1
 let showPlate = function | Safe -> "." | Trap -> "^"
 
-let print xs = 
+let print xs =
   Seq.fold (+) "" (List.map showPlate xs)
 
 let example1 = ".^^.^.^^^^"
