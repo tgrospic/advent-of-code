@@ -2,6 +2,7 @@ import qualified AoC2016.Day09
 import qualified AoC2018.Day01
 import qualified AoC2018.Day02
 import qualified AoC2022.Day01
+import qualified AoC2024.Day01
 import           Control.Monad.IO.Class (MonadIO (liftIO))
 import           Test.Hspec
 import           Text.Printf            (printf)
@@ -23,5 +24,9 @@ main = hspec $ do
   describe (title "2022: Day 1") $ do
     it "Part 1" $ liftIO AoC2022.Day01.part1 `shouldReturn` 70116
     it "Part 2" $ liftIO AoC2022.Day01.part2 `shouldReturn` 206582
+
+  describe (title "2024: Day 1") $ do
+    it "Part 1" $ liftIO AoC2024.Day01.part1 `shouldReturn` 2264607
+    it "Part 2" $ liftIO AoC2024.Day01.part2 `shouldReturn` 19457120
 
 title = printf "\x1b[1;35m%s\x1b[0m"

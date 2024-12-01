@@ -18,6 +18,7 @@ library
                      , AoC2018.Day01
                      , AoC2018.Day02
                      , AoC2022.Day01
+                     , AoC2024.Day01
   build-depends:       base >= 4.7 && < 5
                      , parsec
                      , parsec-numbers
